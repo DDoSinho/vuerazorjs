@@ -1,0 +1,19 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "ES2015",
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "target": "ES5",
+    "outDir": "wwwroot/scripts",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}

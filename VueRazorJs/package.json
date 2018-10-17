@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "asp.net",
+  "private": true,
+  "devDependencies": {
+    "tsc-watch": "^1.0.30"
+  },
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
+}
