@@ -1,7 +1,10 @@
-﻿@page
+﻿@page "{handler?}"
 @model IndexModel
 
-<vue-razor-app id="app" model="@Model.TempClass">
-    {{model.Cica}}
-    {{model.Kutya}}
+<vue-razor-app id="app" model="Model.Person">
+    {{model.Name}}
+    {{model.Age}}
+    {{model.Weight}}
+    <vue-razor-table datasource="Model.Model.DataSource" columnnames="Model.Model.ColumnNames"></vue-razor-table>
+    <vue-razor-table-paginator count="100" pagesize="10"></vue-razor-table-paginator>
 </vue-razor-app>

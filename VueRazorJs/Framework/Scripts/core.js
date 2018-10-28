@@ -1,6 +1,4 @@
-﻿import Vue from 'vue';
-
-var modelString = document.getElementById("app-model").innerHTML;
+﻿var modelString = document.getElementById("app-model").innerHTML;
 var modelJson = JSON.parse(modelString);
 
 var app = new Vue({
@@ -9,6 +7,3 @@ var app = new Vue({
         model: modelJson
     }
 });
-
-alert("");
-console.log("aa");

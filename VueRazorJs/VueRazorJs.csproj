@@ -4,19 +4,19 @@
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Framework\Scripts\core.ts" />
+    <Content Include="Framework\Scripts\core.js" />
+    <Content Include="Framework\TagHelpers\VueRazorAppTagHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="node_modules\" />
-    <Folder Include="wwwroot\scripts\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Framework\Scripts\core.ts" />
+    <Folder Include="Framework\Extras\" />
+    <Folder Include="Framework\PartialViews\" />
   </ItemGroup>
 </Project>

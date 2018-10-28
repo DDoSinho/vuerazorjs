@@ -1,0 +1,8 @@
+﻿@model VueRazorTableModel
+@using Framework.Model
+@using Newtonsoft.Json;
+
+@{
+    @Html.Raw(JsonConvert.SerializeObject(Model.DataSource))
+}
+

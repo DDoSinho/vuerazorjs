@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Newtonsoft.Json;
+using System;
 using System.Linq;
 
 
@@ -10,7 +11,7 @@ namespace VueRazorJs.Framework.TagHelpers
     public class VueRazorAppTagHelper : TagHelper
     {
         [HtmlAttributeName("model")]
-        public TempClass TempClass { get; set; }
+        public Object Model { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -20,9 +21,9 @@ namespace VueRazorJs.Framework.TagHelpers
             {
                 output.TagName = "div";
 
-                if (TempClass != null)
+                if (Model != null)
                 {
-                    string modelJson = JsonConvert.SerializeObject(this.TempClass);
+                    string modelJson = JsonConvert.SerializeObject(this.Model);
 
                     var html = new HtmlString($"<div id='{appId}-model' style='visibility: hidden'>{modelJson}</div>");
                     output.PreContent.AppendHtml(html);
