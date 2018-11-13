@@ -5,75 +5,50 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using VueRazorJs.Framework.Model;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace VueRazorJs.Pages
 {
     public class IndexModel : PageModel
     {
-        public VueRazorTableModel Model { get; set; } = new VueRazorTableModel()
-        {
-            ColumnNames = new List<string>()
-            {
-                "Name",
-                "Age",
-                "Weight"
-            }
-        };
-
-        public static List<Person> DataSource { get; set; }
-
         [BindProperty(SupportsGet = true)]
         public int PageNumber { get; set; }
 
-        public IndexModel()
-        {
-            DataSource = new List<Person>();
-
-            for (int i = 0; i < 100; i++)
-            {
-                DataSource.Add(new Person()
-                {
-                    Name = "Sanyi" + i.ToString(),
-                    Age = i + 1,
-                    Weight = 80
-                });
-            }
-        }
+        public List<Person> DataSource { get; set; }
 
         public void OnGet()
         {
-            Model.DataSource = DataSource.Skip(0 * 10).Take(10).ToList();
+            DataSource = PersonProvider.PersonList.Skip(0 * 10).Take(10).ToList();
         }
 
-        public IActionResult OnGetOne()
+        public IActionResult OnGetPage()
         {
-            Model.DataSource = DataSource.Skip(PageNumber * 10).Take(10).ToList();
-
+            DataSource = PersonProvider.PersonList.Skip(PageNumber * 10).Take(10).ToList();
+            
             var partialPageResult = new PartialViewResult()
             {
-                ViewName = "Shared/Table",
-                ViewData = new ViewDataDictionary<VueRazorTableModel>(ViewData, Model)
+                ViewName = "Shared/_VueRazorTable",
+                ViewData = new ViewDataDictionary<List<Person>>(ViewData, DataSource)
             };
 
             return partialPageResult;
         }
 
-        public Person Person { get; set; } = new Person()
+        public Person Person1 { get; set; } = new Person()
         {
             Name = "Sanyi",
             Age = 10,
             Weight = 40
         };
+
+        public Person Person2 { get; set; } = new Person()
+        {
+            Name = "Lali",
+            Age = 20,
+            Weight = 82
+        };
     }
 
-    public class Person
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public int Weight { get; set; }
-    }
+    
 
 }

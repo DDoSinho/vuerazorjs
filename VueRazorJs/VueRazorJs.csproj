@@ -4,7 +4,6 @@
     <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Framework\Scripts\core.js" />
     <Content Include="Framework\TagHelpers\VueRazorAppTagHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -14,9 +13,5 @@
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Framework\Extras\" />
-    <Folder Include="Framework\PartialViews\" />
   </ItemGroup>
 </Project>

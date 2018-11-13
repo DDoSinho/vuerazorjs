@@ -49,11 +49,7 @@ namespace VueRazorJs
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                RequestPath = PathString.FromUriComponent("/libs"),
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Framework/Scripts")),
-            });
+            app.UseStaticFiles();
 
             app.UseMvc();
         }

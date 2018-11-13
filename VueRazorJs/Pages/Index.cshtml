@@ -1,10 +1,25 @@
 ﻿@page "{handler?}"
 @model IndexModel
 
-<vue-razor-app id="app" model="Model.Person">
+<vue-razor-app appId="app1" model="Model.Person1">
     {{model.Name}}
     {{model.Age}}
     {{model.Weight}}
-    <vue-razor-table datasource="Model.Model.DataSource" columnnames="Model.Model.ColumnNames"></vue-razor-table>
-    <vue-razor-table-paginator count="100" pagesize="10"></vue-razor-table-paginator>
+
+    <vue-razor-render-table>
+        @Html.Partial("Shared/_VueRazorTable.cshtml", Model.DataSource)
+    </vue-razor-render-table>
 </vue-razor-app>
+<!--
+    <vue-razor-app appId="app1" model="Model.Person1">
+    {{model.Name}}
+    {{model.Age}}
+    {{model.Weight}}
+    <vue-razor-table datasource="Model.DataSource" columnnames="Model.ColumnNames" class="kutya">
+        <vue-razor-row>
+            <tr><td>{{row.Alma}}</td><td>{{row.Korte}}</td><td>@DateTime.Now</td></tr>
+        </vue-razor-row>
+    </vue-razor-table>
+    <vue-razor-table-paginator count="100" pagesize="10" url="/Index/page?pagenumber="></vue-razor-table-paginator>
+</vue-razor-app>
+-->
