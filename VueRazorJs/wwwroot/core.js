@@ -27,8 +27,6 @@ class VueAppContainer {
         let findedApp = this.vueApps.find(v => v.key == id);
         let index = this.vueApps.indexOf(findedApp);
 
-        console.log(app);
-
         this.vueApps[index] = {
             key: id,
             value: app
@@ -67,6 +65,18 @@ var VueFactory = (function () {
         var datasourceDiv = appDiv.querySelector(".datasource");
         var pageCount = appDiv.querySelectorAll(".page-index").length;
 
+        var tableDiv = appDiv.querySelector(".vue-razor-table-container");
+        if (tableDiv) {
+            var tmpDiv = document.createElement("div");
+            tableDiv.replaceWith(tmpDiv);
+
+            var tableWrapperDiv = document.createElement("div");
+            tableWrapperDiv.setAttribute("id", "vue-razor-render-table");
+            tableWrapperDiv.appendChild(tableDiv);
+
+            tmpDiv.replaceWith(tableWrapperDiv);
+        }
+
         var data = {};
         var methods = {};
 
@@ -88,7 +98,7 @@ var VueFactory = (function () {
                 if (typeof pageNumber == 'number' && pageNumber < this.pageCount && pageNumber >= 0) {
                     AsyncHttpRequest.get(that.pagingUrl + pageNumber, function (data) {
                         //TODO: fix id
-                        let tableDiv = document.getElementById('rendervuerazortable');
+                        let tableDiv = document.getElementById('vue-razor-render-table');
                         tableDiv.innerHTML = data;
 
                         that.actualPage = pageNumber;
@@ -121,17 +131,3 @@ var VueFactory = (function () {
 })();
 
 var vueFactory = VueFactory.getInstance();
-
-
-/*$.ajax({
-    url: that.pagingUrl + pageNumber,
-    type: "GET",
-    success: function (data) {
-        $("#" + id + "-datasource").html(data);
-
-        var dataSourceString = document.getElementById(id + "-datasource").innerHTML;
-        var dataSourceJson = JSON.parse(dataSourceString);
-        that.datasource = dataSourceJson;
-        that.actualPage = pageNumber;
-    }
-});*/

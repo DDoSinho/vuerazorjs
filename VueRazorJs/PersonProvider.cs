@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VueRazorJs.Framework.Attributes;
 
 namespace VueRazorJs
 {
@@ -18,7 +17,7 @@ namespace VueRazorJs
             {
                 PersonList.Add(new Person()
                 {
-                    Name = "Sanyi" + i.ToString(),
+                    Name = Guid.NewGuid().ToString(),
                     Age = i + 1,
                     Weight = 80
                 });
@@ -26,15 +25,12 @@ namespace VueRazorJs
         }
     }
 
-    [VueRazorTableModel]
     public class Person
     {
-        [VueRazorTableDisplayName("Nameee")]
         public string Name { get; set; }
 
         public int Age { get; set; }
 
-        [VueRazorTableDisplayName("Weight")]
         public int Weight { get; set; }
     }
 }

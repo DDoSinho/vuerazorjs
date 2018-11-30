@@ -1,5 +1,38 @@
 ﻿@model List<Person>
+@*<vue-razor-table datasource="Model" tableRef="" class="table">
+        <vue-razor-table-columns>
+            <vue-razor-table-column class="roka">{{Name}}</vue-razor-table-column>
+            <vue-razor-table-column class="rudi">{{Age}}</vue-razor-table-column>
+            <vue-razor-table-column class="maki">{{Weight}}</vue-razor-table-column>
+        </vue-razor-table-columns>
+        <vue-razor-table-paginator position="TableRelativePosition.Both" count="100" pagesize="8" url="/Index/page?pagenumber="></vue-razor-table-paginator>
+    </vue-razor-table>*@
 
-<vue-razor-table datasource="Model" class="kutya">
+
+@*<vue-razor-table datasource="Model" class="table">
+        <vue-razor-table-column asp-for="p => p.Name" class="roka">
+            <header>Név</header>
+            <content>zsömzsöm: {{row.Name}}</content>
+        </vue-razor-table-column>
+    </vue-razor-table>
+    *@
+
+<vue-razor-table datasource="Model" class="table">
+    <vue-razor-table-paginator count="100" pagesize="8" url="/Index/page?pagenumber=" position="Both"></vue-razor-table-paginator>
+
+    <vue-razor-table-column for="@nameof(Person.Name)">
+        <vue-razor-table-header class="a">Név</vue-razor-table-header>
+        <vue-razor-table-content class="b">{{row.Name}}</vue-razor-table-content>
+    </vue-razor-table-column>
+
+    <vue-razor-table-column for="Age">
+        <vue-razor-table-header>Kor</vue-razor-table-header>
+        <vue-razor-table-content>{{row.Age + 62}}</vue-razor-table-content>
+    </vue-razor-table-column>
+
+    <vue-razor-table-column for="Weight">
+        <vue-razor-table-header>Súly</vue-razor-table-header>
+        <vue-razor-table-content>100</vue-razor-table-content>
+    </vue-razor-table-column>
+
 </vue-razor-table>
-<vue-razor-table-paginator count="100" pagesize="10" url="/Index/page?pagenumber="></vue-razor-table-paginator>

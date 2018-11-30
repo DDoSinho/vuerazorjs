@@ -18,12 +18,12 @@ namespace VueRazorJs.Pages
 
         public void OnGet()
         {
-            DataSource = PersonProvider.PersonList.Skip(0 * 10).Take(10).ToList();
+            DataSource = PersonProvider.PersonList.Skip(0 * 8).Take(8).ToList();
         }
 
         public IActionResult OnGetPage()
         {
-            DataSource = PersonProvider.PersonList.Skip(PageNumber * 10).Take(10).ToList();
+            DataSource = PersonProvider.PersonList.Skip(PageNumber * 8).Take(8).ToList();
             
             var partialPageResult = new PartialViewResult()
             {

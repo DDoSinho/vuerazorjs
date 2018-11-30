@@ -12,7 +12,7 @@ namespace VueRazorJs.Framework.TagHelpers
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
-            output.Attributes.Add(new TagHelperAttribute("id", "rendervuerazortable"));
+            output.Attributes.Add(new TagHelperAttribute("id", "vue-razor-render-table"));
         }
     }
 }
